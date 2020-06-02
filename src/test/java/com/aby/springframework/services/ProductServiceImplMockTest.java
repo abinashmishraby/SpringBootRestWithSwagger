@@ -1,24 +1,23 @@
 package com.aby.springframework.services;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.Optional;
+
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import com.aby.springframework.domain.Product;
 import com.aby.springframework.repositories.ProductRepository;
-import com.aby.springframework.services.ProductServiceImpl;
-
-import java.util.Optional;
-
-import static org.mockito.Mockito.*;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-
-
 
 public class ProductServiceImplMockTest {
 
@@ -57,6 +56,7 @@ public class ProductServiceImplMockTest {
         // Arrange
         doNothing().when(productRepository).deleteById(5);
         ProductRepository my = Mockito.mock(ProductRepository.class);
+        System.out.println(my.toString());
         // Act
         productServiceImpl.deleteProduct(5);
         // Assert

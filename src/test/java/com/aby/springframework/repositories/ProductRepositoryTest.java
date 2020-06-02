@@ -55,6 +55,7 @@ public class ProductRepositoryTest {
         Iterable<Product> products = productRepository.findAll();
         int count = 0;
         for(Product p : products){
+        	System.out.println(p);
             count++;
         }
         assertEquals(count, 1);

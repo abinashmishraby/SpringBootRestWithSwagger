@@ -1,5 +1,10 @@
 package com.aby.springframework.services;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.never;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -9,13 +14,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.aby.springframework.domain.Product;
 import com.aby.springframework.repositories.ProductRepository;
-import com.aby.springframework.services.ProductServiceImpl;
-
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.when;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -50,6 +48,7 @@ public class ProductServiceImplSpyTest {
         Mockito.doReturn(product).when(prodServiceSpy).getProductById(5);
         //Act
         Product retrievedProduct = prodServiceSpy.getProductById(5);
+        System.out.println(retrievedProduct.toString());
         //Assert
         Mockito.verify(prodServiceSpy).getProductById(5);
     }
@@ -59,6 +58,7 @@ public class ProductServiceImplSpyTest {
         Mockito.doReturn(product).when(prodServiceSpy).getProductById(5);
         //Act
         Product retrievedProduct = prodServiceSpy.getProductById(5);
+        System.out.println(retrievedProduct.toString());
         //Assert
         Mockito.verify(prodServiceSpy,never()).saveProduct(product);
     }
